@@ -1,5 +1,6 @@
 package com.integration.demo.validator.application.api;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,6 @@ public class PersonDataRequest {
     @NotBlank
     private String name;
     @NotBlank
+    @Pattern(regexp="\\d{4}-\\d{2}-\\d{2}", message = "Data de nascimento deve estar no formato: yyyy-MM-dd")
     private String brithDate;
 }

@@ -1,5 +1,6 @@
 package com.integration.demo.validator.application.api;
 
+import com.integration.demo.validator.application.service.PersonDataValidatorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -13,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Log4j2
 public class PersonDataValidatorAPI {
+    private final PersonDataValidatorService personDataValidatorService;
     @PostMapping(value = "/public/person-data-validation")
     @ResponseStatus(code = HttpStatus.OK)
-    public void validesPersonData(@Valid @RequestBody PersonDataRequest personDataRequest){
+    public PersonDataValidationResponse validesPersonData(@Valid @RequestBody PersonDataRequest personDataRequest){
         log.info("[start] PersonDataValidatorAPI - validesPersonData");
         log.info("[personDataRequest] {}", personDataRequest);
-
-
+        var validation = personDataValidatorService.valides(personDataRequest);
         log.info("[finish] PersonDataValidatorAPI - validesPersonData");
+        return validation;
     }
 }
