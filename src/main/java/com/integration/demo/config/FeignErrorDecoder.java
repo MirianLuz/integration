@@ -1,4 +1,4 @@
-package com.integration.demo.validator.application.config;
+package com.integration.demo.config;
 
 
 import feign.Response;

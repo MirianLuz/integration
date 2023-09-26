@@ -1,10 +1,7 @@
 package com.integration.demo.validator.application.api;
 
 import jakarta.validation.constraints.Pattern;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -14,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Builder(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class PersonDataRequest {
     @NotBlank
     @CPF
@@ -26,7 +25,7 @@ public class PersonDataRequest {
 
     public LocalDate getBirthDateLocalDate(){
         try {
-            return LocalDate.parse(brithDate, DateTimeFormatter.ofPattern("yyy-MM-dd"));
+            return LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("yyy-MM-dd"));
         } catch (Exception e){
             return null;
         }
