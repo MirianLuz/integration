@@ -1,0 +1,7 @@
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    org.springframework.web: ${LOG_LEVEL:INFO}
+    org.hibernate: ${LOG_LEVEL:INFO}
+    com.integration: ${LOG_LEVEL:TRACE}
+    com.amazonas.util.EC2MetadataUtils: ${LOG_LEVEL:ERROR}
