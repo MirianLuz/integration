@@ -9,12 +9,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Log4j2
 public class PersonDataInfraIntegrator implements PersonDataIntegrator {
+    private static final String TOKEN = "Bearer 06aef429-a981-3ec5-a1f8-71d38d86481e";
+    private final SerproClientFeign serproClientFeign;
+
     @Override
     public PersonDataOfficial getPersonData(PersonDataRequest personDataRequest) {
         log.info("[start] PersonDataInfraIntegrator - getPersonData");
-        log.info("[personDataRequest] {}", personDataRequest);
-
+        log.debug("[personDataRequest] {}", personDataRequest);
+        PersonDataOfficial personDataOfficial = serproClientFeign.getConsultaCPF(TOKEN,personDataRequest.getCpf());
+        log.debug("[personDataOfficial] {}", personDataOfficial);
         log.info("[finish] PersonDataInfraIntegrator - getPersonData");
-        return null;
+        return personDataOfficial;
     }
 }

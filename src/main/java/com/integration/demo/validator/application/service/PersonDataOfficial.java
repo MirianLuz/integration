@@ -13,6 +13,7 @@ import lombok.ToString;
 public class PersonDataOfficial {
     @JsonProperty("ni")
     private String cpf;
+    @JsonProperty("nome")
     private String nome;
     @JsonProperty("nascimento")
     private String dataNascimento;
