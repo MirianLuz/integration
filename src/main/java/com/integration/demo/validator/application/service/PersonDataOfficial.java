@@ -3,14 +3,15 @@ package com.integration.demo.validator.application.service;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.integration.demo.validator.application.api.PersonDataRequest;
 import com.integration.demo.validator.application.api.PersonDataValidationResponse;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @ToString
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class PersonDataOfficial {
     @JsonProperty("ni")
     private String cpf;
@@ -29,7 +30,7 @@ public class PersonDataOfficial {
         return getValid();
     }
 
-    private LocalDate getDataNascimentoLocalDate(){
+     LocalDate getDataNascimentoLocalDate(){
         try {
             return LocalDate.parse(dataNascimento, DateTimeFormatter.ofPattern("ddMMyyyy"));
         } catch (Exception e){

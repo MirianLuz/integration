@@ -1,6 +1,9 @@
-package com.integration.demo.validator.application.service;
+package com.integration.demo.validator.infra;
 
 import com.integration.demo.validator.application.api.PersonDataRequest;
+import com.integration.demo.validator.application.service.PersonDataIntegrator;
+import com.integration.demo.validator.application.service.PersonDataOfficial;
+import com.integration.demo.validator.application.service.SerproClientFeign;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
