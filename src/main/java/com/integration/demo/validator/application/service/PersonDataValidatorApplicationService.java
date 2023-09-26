@@ -10,13 +10,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Log4j2
 public class PersonDataValidatorApplicationService implements PersonDataValidatorService {
+    private final PersonDataIntegrator personDataIntegrator;
     @Override
     public PersonDataValidationResponse valides(PersonDataRequest personDataRequest) {
         log.info("[start] PersonDataValidatorApplicationService - valides");
         log.info("[personDataRequest] {}", personDataRequest);
-
+        PersonDataOfficial personDataOfficial = personDataIntegrator.getPersonData(personDataRequest);
+        PersonDataValidationResponse personDataValidationResponse = personDataOfficial.valides(personDataRequest);
         log.info("[finish] PersonDataValidatorApplicationService - valides");
-        return null;
-
+        return personDataValidationResponse;
     }
 }
