@@ -26,7 +26,7 @@ public class PersonDataRequest {
 
     public LocalDate getBirthDateLocalDate(){
         try {
-            return LocalDate.parse(brithDate, DateTimeFormatter.ofPattern("yyy-MM-dd"));
+            return LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("yyy-MM-dd"));
         } catch (Exception e){
             return null;
         }
